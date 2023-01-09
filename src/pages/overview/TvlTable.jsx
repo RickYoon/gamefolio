@@ -91,29 +91,29 @@ function TvlTable() {
         <thead>
           <Styled.TrHead>
             <Styled.Th>#</Styled.Th>
-            <Styled.Tdp>Token / Game</Styled.Tdp>
+            <Styled.Tdpd>Token / Game</Styled.Tdpd>
             {/* <Styled.Tdc width="200px">Game</Styled.Tdc> */}
-            <Styled.Tdc width="50px">chain</Styled.Tdc>
-            <Styled.Td textAlign="right" onClick={handleTvlOrder} style={{cursor: "pointer"}}>
+            <Styled.Td>chain</Styled.Td>
+            <Styled.Tdk textAlign="right" onClick={handleTvlOrder} style={{cursor: "pointer"}}>
                 {/* {ovfilter.tvlOrder ? <CgArrowDown style={{verticalAlign:"bottom"}}/> : <></>} */}
                 price($)
-            </Styled.Td>
-            <Styled.Td textAlign="right" onClick={handleOnedayOrder} style={{cursor: "pointer"}}>
+            </Styled.Tdk>
+            <Styled.Tdk textAlign="right" onClick={handleOnedayOrder} style={{cursor: "pointer"}}>
                 {/* {ovfilter.onedayOrder ? <CgArrowDown style={{verticalAlign:"bottom"}}/> : <></>} */}
                 <DesktopFont>1day</DesktopFont>
                 <MobileFont>1D</MobileFont>
-            </Styled.Td>
-            <Styled.Td textAlign="right" onClick={handleOnedayOrder} style={{cursor: "pointer"}}>
+            </Styled.Tdk>
+            <Styled.Tdk textAlign="right" onClick={handleOnedayOrder} style={{cursor: "pointer"}}>
                 {/* {ovfilter.onedayOrder ? <CgArrowDown style={{verticalAlign:"bottom"}}/> : <></>} */}
                 <DesktopFont>MarketCap($)</DesktopFont>
                 <MobileFont>MCap($)</MobileFont>
-            </Styled.Td>
-            <Styled.Td textAlign="right" onClick={handleSevendayOrder} style={{cursor: "pointer"}}>
+            </Styled.Tdk>
+            <Styled.Tdk textAlign="right" onClick={handleSevendayOrder} style={{cursor: "pointer"}}>
                 {/* {ovfilter.sevendayOrder ? <CgArrowDown style={{verticalAlign:"bottom"}}/> : <></>} */}
                 <DesktopFont>Transaction</DesktopFont>
                 <MobileFont>Trx</MobileFont>
-            </Styled.Td>
-            <Styled.Td textAlign="right">Holders</Styled.Td>
+            </Styled.Tdk>
+            <Styled.Tdk textAlign="right">Holders</Styled.Tdk>
           </Styled.TrHead>
         </thead>
         <tbody>
@@ -138,7 +138,7 @@ function TvlTable() {
               <Tr style={{ height: "60px", borderBottom: "0.06em solid #D4D4D4 " }}>
                 <Styled.Th className="head" style={{ width: "50px", textAlign: "left" }}> {index+1}
                 </Styled.Th>
-                <Th>
+                <Styled.Th>
                     <PoolinfoBox>
                       <Iconbox>
                         <Iconwrapper>
@@ -154,18 +154,18 @@ function TvlTable() {
                         </Token>
                       </Explainbox>
                     </PoolinfoBox>
-                  </Th>
+                  </Styled.Th>
                     {/* <Link to={`/project/${tvld.proj}`}>
                         <img src={icons[tvld.tokenSymbol]} alt="logo" height="25px" width="25px" style={{ padding: "1px", verticalAlign: "middle", borderRadius: "15px" }} />
                         <span style={{ padding: "0px", whiteSpace: "nowrap", paddingLeft:"5px" }}>{tvld.tokenName}</span>
                     </Link> */}
                 {/* <Styled.Tdc className="head" style={{ width: "100px", fontSize:"14px", color:"#3f3f3f"}}>{tvld.relatedGame}</Styled.Tdc> */}
-                <Styled.Tdc className="head" style={{ width: "100px", fontSize:"14px", color:"#3f3f3f"}}>
+                <Styled.Td className="head" style={{ width: "100px", fontSize:"14px", color:"#3f3f3f"}}>
                 <Iconwrapper>
                   <Img src={icons[tvld.blockchain]} alt="logo" fontSize="20px"/>
                   </Iconwrapper>
                   {/* {tvld.blockchain} */}
-                </Styled.Tdc>
+                </Styled.Td>
                 <Styled.Td className="content" style={{ width: "200px", textAlign: "right" }}>
                     {tvld.pricePerUSD.toFixed(3)}
                 </Styled.Td>
@@ -185,6 +185,7 @@ function TvlTable() {
   );
 }
 
+
 const Tr = styled.tr`
 height : 40px;
 line-height: 40px;
@@ -195,6 +196,7 @@ line-height: 40px;
     line-height: 40px;
   }
 `
+
 
 const DesktopFont = styled.span`
   @media screen and (max-width: 500px){
@@ -280,17 +282,6 @@ const Iconbox = styled.div`
   display: flex;
   flex-direction: row;
 `
-
-
-const Th = styled.th`
-  height:15px;
-  vertical-align:middle;
-  padding-left:5px;
-  @media screen and (max-width: 500px){
-    max-width: 150px;
-  }
-
-`;
 
 
 export default TvlTable;

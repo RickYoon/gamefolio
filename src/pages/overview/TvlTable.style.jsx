@@ -14,11 +14,11 @@ export const Tdpd = Styled.td`
   font-size: 15px;
 
   @media screen and (max-width: 500px){
-    padding-left: 10px;
-    font-size:13px;
-    width: 1000px;
-    font-size: 12px;
-  }
+    font-size: 11px;
+    width: 200px;
+}
+
+
 `
 
 export const P = Styled.p`
@@ -32,6 +32,20 @@ export const Table = Styled.table`
 export const TrHead = Styled.tr`
   height: 40px;
   border-bottom: 2px solid black;
+  @media screen and (max-width: 500px){
+    font-size: 11px;
+    width: 200px;
+}
+`
+
+export const Tdk = Styled.td`
+  vertical-align:middle;
+  width: ${props => props.width || "200px"};
+  text-align:  ${props => props.textAlign || ""};
+  @media screen and (max-width: 500px){
+    padding-left: 5em;
+    /* width: 150px; */
+  }
 `
 
 export const Th = Styled.th`
@@ -41,7 +55,10 @@ export const Th = Styled.th`
   vertical-align:middle;
   padding-left:5px;
   white-space: nowrap;
-  
+  @media screen and (max-width: 500px){
+    font-size: 11px;
+    width: 200px;
+}
 `;
 
 export const Td = Styled.td`
@@ -50,33 +67,32 @@ export const Td = Styled.td`
   text-align:  ${props => props.textAlign || ""};
   font-size: 14px;
   @media screen and (max-width: 500px){
-    font-size: 12px;
-  }
+    font-size: 11px;
+    width: 200px;
+}
 `
 
 export const Tdc = Styled.td`
-  @media screen and (max-width: 500px){
-    display:none;
-    
-  }
   font-size: 14px;
   vertical-align:middle;
   width: ${props => props.width || "200px"};
   text-align:  ${props => props.textAlign || ""};
+  @media screen and (max-width: 500px){
+    font-size: 11px;
+    width: 200px;
+  }
 `;
 
 export const Tdp = Styled.td`
   vertical-align:middle;
-  width: 400px;
+  width: 200px;
   padding-left: 2em;
   font-size: 14px;
-  
-  @media screen and (max-width: 500px){
-    padding-left: 1em;
-    width: 250px;
-    font-size: 12px;
 
-  }
+  @media screen and (max-width: 500px){
+    font-size: 11px;
+    width: 200px;
+}
 `
 
 
@@ -117,45 +133,14 @@ export const TodoTemplateBlock = Styled.div`
   }
   
   @media screen and (max-width: 500px){
-    width: 100%;
-    padding-left:0px;
-    padding-right:0px;
-    border-radius: 8px;
-    box-shadow: 1px 1px 1px gray;
+    /* width: 360px; */
+    /* width: 600px; */
+    overflow-x: auto;
+    /* width: 800px; */
+    padding: 0 16px;
+    white-space: pre;
+    width: calc(100%);
 
-    color: rgba(0, 0, 0, 0.87);
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    min-width: 0px;
-    overflow-wrap: break-word;
-    background-color: rgb(255, 255, 255);
-    background-clip: border-box;
-    border: 0px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.75rem;
-    box-shadow: rgb(0 0 0 / 10%) 0rem 0.25rem 0.375rem -0.0625rem, rgb(0 0 0 / 6%) 0rem 0.125rem 0.25rem -0.0625rem;
-    overflow: visible;
-    margin: 0 auto; /* 페이지 중앙에 나타나도록 설정 */
-
-    margin-top: 16px;
-    margin-bottom: 5px;
-
-    .loader {
-      margin-left:135px;
-    }
-    .mobtrans{
-      display:none;
-    }
-    .tablecss{
-      font-size:13px;
-      
-    }
-    /* .head{
-    }
-    .headcol:before {
-      content: 'Row ';
-    }
-  .content {
-    background: #8cdba3;
-} */
   }
 `;
 

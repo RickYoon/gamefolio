@@ -31,6 +31,11 @@ const Wallet = styled.div`
     margin-left: 200px;
     padding: 10px 14px;
     font-size:15px;
+
+    @media screen and (max-width: 500px){
+        margin-left: 0px;
+        font-size:10px;
+    }
 `
 
 
