@@ -28,7 +28,7 @@ import ITU from "./ITU.svg"
 import WEMIX from "./WEMIX.svg"
 import MBX from "./MBX.svg"
 import BORA from "./BORA.svg"
-import GRND from "./GRND.jpeg"
+import GRND from "./GRND.png"
 import JADE from "./JADE.webp"
 import JEWEL from "./JEWEL.png"
 import KAI from "./KAI.png"
@@ -36,7 +36,7 @@ import MARD from "./MARD.png"
 import NGIT from "./NGIT.png"
 import SKZ from "./SKZ.png"
 import KLAYTN from "./KLAYTN.png"
-import JOY from "./JOY.webp"
+import JOY from "./JOY.png"
 
 const icons = {
     KLAYTN,
