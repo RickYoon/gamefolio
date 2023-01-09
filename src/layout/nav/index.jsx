@@ -5,7 +5,7 @@ import Mobile from './mobile'
 export default function Nav() {
 	return (
 		<>
-            <Mobile />
+            {/* <Mobile /> */}
             <Desktop />
 		</>
 	)
