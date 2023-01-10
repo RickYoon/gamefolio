@@ -95,25 +95,23 @@ function TvlTable() {
             {/* <Styled.Tdc width="200px">Game</Styled.Tdc> */}
             <Styled.Td>chain</Styled.Td>
             <Styled.Tdk textAlign="right" onClick={handleTvlOrder} style={{cursor: "pointer"}}>
-                {/* {ovfilter.tvlOrder ? <CgArrowDown style={{verticalAlign:"bottom"}}/> : <></>} */}
-                price($)
+                {ovfilter.tvlOrder ? <><CgArrowDown style={{verticalAlign:"bottom"}} /> price (%) </>: <>price (%)</>}
+                
+            </Styled.Tdk>
+            <Styled.Tdk textAlign="right">
+                {ovfilter.sevendayOrder ? <CgArrowDown style={{verticalAlign:"bottom"}}/> : <></>}
+                <DesktopFont>todayTrx</DesktopFont>
+                <MobileFont>Trx</MobileFont>
             </Styled.Tdk>
             <Styled.Tdk textAlign="right" onClick={handleOnedayOrder} style={{cursor: "pointer"}}>
-                {/* {ovfilter.onedayOrder ? <CgArrowDown style={{verticalAlign:"bottom"}}/> : <></>} */}
-                <DesktopFont>1day</DesktopFont>
-                <MobileFont>1D</MobileFont>
+              {ovfilter.onedayOrder ? <CgArrowDown style={{verticalAlign:"bottom"}}/> : <></>}
+              todayHolder
             </Styled.Tdk>
-            <Styled.Tdk textAlign="right" onClick={handleOnedayOrder} style={{cursor: "pointer"}}>
-                {/* {ovfilter.onedayOrder ? <CgArrowDown style={{verticalAlign:"bottom"}}/> : <></>} */}
+            <Styled.Tdk textAlign="right" >
+                
                 <DesktopFont>MarketCap($)</DesktopFont>
                 <MobileFont>MCap($)</MobileFont>
             </Styled.Tdk>
-            <Styled.Tdk textAlign="right" onClick={handleSevendayOrder} style={{cursor: "pointer"}}>
-                {/* {ovfilter.sevendayOrder ? <CgArrowDown style={{verticalAlign:"bottom"}}/> : <></>} */}
-                <DesktopFont>Transaction</DesktopFont>
-                <MobileFont>Trx</MobileFont>
-            </Styled.Tdk>
-            <Styled.Tdk textAlign="right">Holders</Styled.Tdk>
           </Styled.TrHead>
         </thead>
         <tbody>
@@ -160,20 +158,44 @@ function TvlTable() {
                         <span style={{ padding: "0px", whiteSpace: "nowrap", paddingLeft:"5px" }}>{tvld.tokenName}</span>
                     </Link> */}
                 {/* <Styled.Tdc className="head" style={{ width: "100px", fontSize:"14px", color:"#3f3f3f"}}>{tvld.relatedGame}</Styled.Tdc> */}
-                <Styled.Td className="head" style={{ width: "100px", fontSize:"14px", color:"#3f3f3f"}}>
+                <Styled.Td className="head" style={{ width: "50px", fontSize:"14px", color:"#3f3f3f"}}>
                 <Iconwrapper>
                   <Img src={icons[tvld.blockchain]} alt="logo" fontSize="20px"/>
                   </Iconwrapper>
                   {/* {tvld.blockchain} */}
                 </Styled.Td>
-                <Styled.Td className="content" style={{ width: "200px", textAlign: "right" }}>
-                    {tvld.pricePerUSD.toFixed(3)}
+                <Styled.Td className="content" style={{ width: "100px", textAlign: "right" }}>
+                {(tvld.pricePerUSDDiff / tvld.pricePerUSD * 100) > 0 ?
+                    <span style={{color:"red", fontSize:"12px"}}>{Number(tvld.pricePerUSD).toLocaleString()}  (+{(tvld.pricePerUSDDiff / tvld.pricePerUSD * 100).toFixed(2)}%)</span>
+                    : (tvld.pricePerUSDDiff / tvld.pricePerUSD * 100) < 0 ?
+                      <span style={{color:"blue", fontSize:"12px"}}>{Number(tvld.pricePerUSD).toLocaleString()}  ({(tvld.pricePerUSDDiff / tvld.pricePerUSD * 100).toFixed(2)}%)</span>
+                      :
+                      <span style={{color:"black", fontSize:"12px"}}>{Number(tvld.pricePerUSD).toLocaleString()}  ({(tvld.pricePerUSDDiff / tvld.pricePerUSD * 100).toFixed(2)}%)</span>
+                    }
                 </Styled.Td>
-                <Styled.Td className="content" style={{ width: "200px", textAlign: "right", color: "red" }}>-%</Styled.Td>
-                <Styled.Td className="content" style={{ width: "200px", textAlign: "right" }}>
+                <Styled.Td className="content" style={{ width: "100px", textAlign: "right" }}>
+                {(tvld.transferNumberDiff / tvld.transferNumber * 100) > 1 ?
+                    <span style={{color:"red", fontSize:"12px"}}>+{Number(tvld.transferNumberDiff).toLocaleString()}  ({(tvld.transferNumberDiff / tvld.transferNumber * 100).toFixed(2)}%)</span>
+                    : (tvld.transferNumberDiff / tvld.transferNumber * 100) < 1 ?
+                      <span style={{color:"black", fontSize:"12px"}}>{Number(tvld.transferNumberDiff).toLocaleString()}  ({(tvld.transferNumberDiff / tvld.transferNumber * 100).toFixed(2)}%)</span>
+                      :
+                      <span style={{color:"black", fontSize:"12px"}}>{Number(tvld.transferNumberDiff).toLocaleString()}  ({(tvld.transferNumberDiff / tvld.transferNumber * 100).toFixed(2)}%)</span>
+                    }
+                    </Styled.Td>
+                  <Styled.Td className="content" style={{ width: "100px", textAlign: "right" }}>
+                  {tvld.holderNumberDiff > 0 ?
+                    <span style={{color:"red", fontSize:"12px"}}>+{Number(tvld.holderNumberDiff).toLocaleString()}  ({(tvld.holderNumberDiff / tvld.holderNumber * 100).toFixed(2)}%)</span>
+                    : tvld.holderNumberDiff < 0 ?
+                      <span style={{color:"blue", fontSize:"12px"}}>{Number(tvld.holderNumberDiff).toLocaleString()}  ({(tvld.holderNumberDiff / tvld.holderNumber * 100).toFixed(2)}%)</span>
+                      :
+                      <span style={{color:"black", fontSize:"12px"}}>{Number(tvld.holderNumberDiff).toLocaleString()}  ({(tvld.holderNumberDiff / tvld.holderNumber * 100).toFixed(2)}%)</span>
+                    }
+                    
+                    {/* <br />
+                    {Number(tvld.holderNumber).toLocaleString()} */}
+                </Styled.Td>
+                <Styled.Td className="content" style={{ width: "100px", textAlign: "right" }}>
                     {tvld.marketCap > 0 ? Number(tvld.transferNumber).toLocaleString() : "-"}</Styled.Td>
-                <Styled.Td className="content" style={{ width: "200px", textAlign: "right" }}>{Number(tvld.transferNumber).toLocaleString()}</Styled.Td>
-                <Styled.Td className="content" style={{ width: "200px", textAlign: "right" }}>{Number(tvld.holderNumber).toLocaleString()}</Styled.Td>
 
             </Tr>
             ))

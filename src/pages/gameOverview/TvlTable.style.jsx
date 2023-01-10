@@ -42,7 +42,6 @@ export const Tdk = Styled.td`
   vertical-align:middle;
   width: ${props => props.width || "200px"};
   text-align:  ${props => props.textAlign || ""};
-  padding-left: 3em;
   @media screen and (max-width: 500px){
     padding-left: 5em;
     /* width: 150px; */

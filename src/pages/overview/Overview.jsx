@@ -121,54 +121,18 @@ function Overview() {
     //  let tempState = []
      if(ovfilter.tvlOrder){
         backdata.sort(function (a, b) {
-          return a.tvl < b.tvl ? 1 : a.tvl > b.tvl ? -1 : 0;
+          return (a.pricePerUSDDiff / a.pricePerUSD) > (b.pricePerUSDDiff / b.pricePerUSD) ? -1 : (a.pricePerUSDDiff / a.pricePerUSD) < (b.pricePerUSDDiff / b.pricePerUSD) ? 1 : 0;
         })
      } else if (ovfilter.onedayOrder){
         backdata.sort(function (a, b) {
-          return a.difftwo < b.difftwo ? 1 : a.difftwo > b.difftwo ? -1 : 0;
+          return a.holderNumberDiff > b.holderNumberDiff ? -1 : a.holderNumberDiff < b.holderNumberDiff ? 1 : 0;
         })
      } else if (ovfilter.sevendayOrder){
       backdata.sort(function (a, b) {
-        return a.diff < b.diff ? 1 : a.diff > b.difftwo ? -1 : 0;
+        return a.holderNumberDiff > b.holderNumberDiff ? -1 : a.holderNumberDiff < b.holderNumberDiff ? 1 : 0;
       })
     }
 
-
-
-     if(ovfilter.category === ""){
-      setTvldata({
-        ...tvldata, 
-        data : backdata
-      })
-     } else if (ovfilter.category === "Dexes") {
-      let tempState = backdata.filter(element =>  element.cat === "Dexes" )
-      console.log(tempState)
-      setTvldata({
-        ...tvldata, 
-        data : tempState
-      })
-     } else if (ovfilter.category === "Lending") {
-      let tempState = backdata.filter(element =>  element.cat === "Lending" )
-      console.log(tempState)
-      setTvldata({
-        ...tvldata, 
-        data : tempState
-      })
-     } else if (ovfilter.category === "Staking") {
-      let tempState = backdata.filter(element =>  element.cat === "Staking" )
-      console.log(tempState)
-      setTvldata({
-        ...tvldata, 
-        data : tempState
-      })
-     } else if (ovfilter.category === "Optimizer") {
-      let tempState = backdata.filter(element =>  element.cat === "Optimizer" )
-      console.log(tempState)
-      setTvldata({
-        ...tvldata, 
-        data : tempState
-      })
-     }
   }, [ovfilter])
 
     const loadEvent = async () => {
@@ -198,51 +162,18 @@ function Overview() {
         setIsloading(true)
 
         await getTvlData().then(function (response) {
-      
-
-            // let top = (refArr.sort(function (a, b) {
-            //   return a.difftwo > b.difftwo ? -1 : a.difftwo < b.difftwo ? 1 : 0;
-            // }))
-
-            // let row = (tokenArr.sort(function (a, b) {
-            //   return a.priceDiff > b.priceDiff ? -1 : a.priceDiff < b.priceDiff ? 1 : 0;
-            // }))
-
-            // setToptvl(top.slice(0,3))
-            // setToptoken(row.slice(0,3))
-            // // setToptoken(row)
-
-            // // console.log("topToken", row)
-      
-            // let tokenArrSort = [];
-      
-            // for (let i = 0; i < tempArr.length; i++) {
-            //   let temp = tokenArr.filter(dat => dat.project === tempArr[i].proj)
-            //   temp.forEach((comp) => {
-            //     tokenArrSort.push(comp)
-            //   })
-            // }
-      
-            // console.log("tokenArr", tokenArrSort)
-            // setTokendata(response.body.tokenData)
-      
-            // tempArr = tempArr.filter(dat => dat.proj !== "neuronswap")
-            // tempArr.map((component) => {
-            //   component["MarketShare"] = component.tvl / tempTotal[0].tvl * 100
-            //   return null
-            // })
-      
-            // console.log(tempTotal[0].tvl)
-            // console.log("tempArr", tempArr)
 
             
             console.log("response.body.tokenData",response.body.tokenData)
 
+            // response.body.tokenData.sort(function (a, b) {
+            //   return a.holderNumberDiff > b.holderNumberDiff ? -1 : a.holderNumberDiff < b.holderNumberDiff ? 1 : 0;
+            // })
+
             response.body.tokenData.sort(function (a, b) {
-              return a.holderNumber > b.holderNumber ? -1 : a.holderNumber < b.holderNumber ? 1 : 0;
+              return (a.pricePerUSDDiff / a.pricePerUSD) > (b.pricePerUSDDiff / b.pricePerUSD) ? -1 : (a.pricePerUSDDiff / a.pricePerUSD) < (b.pricePerUSDDiff / b.pricePerUSD) ? 1 : 0;
             })
 
-      
             const responseObj = {
               refDate: response.body.refDate,
               total: 0,

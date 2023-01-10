@@ -14,7 +14,7 @@ function Topnav() {
     const { pathname } = useLocation();
 
     const moveMain = () => {
-        window.location.href = "https://www.klaylabs.net"
+        window.location.href = "https://www.gamefolio.xyz"
     }
 
     const moveNFT = () => {
@@ -39,6 +39,14 @@ function Topnav() {
             </TemplateBlock>
 
             <SubTopNavBlock style={{ marginBottom: "30px", marginTop: "20px", fontSize: "15px" }}>
+                {/* <Underline primary={pathname === "/"}>
+                    <Link to="/game">
+                        {pathname === "/game" ?
+                            <Span style={{ color: "black" }}><BiSpreadsheet style={{ marginRight: "5px", verticalAlign: "middle" }} />Games </Span> :
+                            <span style={{ color: "gray" }}><BiSpreadsheet style={{ marginRight: "5px", verticalAlign: "middle" }} />Games </span>
+                        }
+                    </Link>
+                </Underline> */}
                 <Underline primary={pathname === "/"}>
                     <Link to="/">
                         {pathname === "/" ?
