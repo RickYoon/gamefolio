@@ -43,6 +43,7 @@ export const Tdk = Styled.td`
   width: ${props => props.width || "200px"};
   text-align:  ${props => props.textAlign || ""};
   padding-left: 3em;
+  font-size: 12px;
   @media screen and (max-width: 500px){
     padding-left: 5em;
     /* width: 150px; */

@@ -95,20 +95,22 @@ function TvlTable() {
             {/* <Styled.Tdc width="200px">Game</Styled.Tdc> */}
             <Styled.Td>chain</Styled.Td>
             <Styled.Tdk textAlign="right" onClick={handleTvlOrder} style={{cursor: "pointer"}}>
-                {ovfilter.tvlOrder ? <><CgArrowDown style={{verticalAlign:"bottom"}} /> price (%) </>: <>price (%)</>}
+                {ovfilter.tvlOrder ? <><CgArrowDown style={{verticalAlign:"bottom"}} /> price (24H,%) </>: <>price (24H,%)</>}
                 
             </Styled.Tdk>
             <Styled.Tdk textAlign="right">
                 {ovfilter.sevendayOrder ? <CgArrowDown style={{verticalAlign:"bottom"}}/> : <></>}
-                <DesktopFont>todayTrx</DesktopFont>
+                <DesktopFont>transfer (24H)</DesktopFont>
                 <MobileFont>Trx</MobileFont>
             </Styled.Tdk>
             <Styled.Tdk textAlign="right" onClick={handleOnedayOrder} style={{cursor: "pointer"}}>
               {ovfilter.onedayOrder ? <CgArrowDown style={{verticalAlign:"bottom"}}/> : <></>}
-              todayHolder
+              Holder (24H)
             </Styled.Tdk>
-            <Styled.Tdk textAlign="right" >
-                
+            <Styled.Tdk textAlign="right" onClick={handleOnedayOrder} style={{cursor: "pointer"}}>
+              TotalHolder
+            </Styled.Tdk>
+            <Styled.Tdk textAlign="right" >                
                 <DesktopFont>MarketCap($)</DesktopFont>
                 <MobileFont>MCap($)</MobileFont>
             </Styled.Tdk>
@@ -194,6 +196,8 @@ function TvlTable() {
                     {/* <br />
                     {Number(tvld.holderNumber).toLocaleString()} */}
                 </Styled.Td>
+                <Styled.Td className="content" style={{ width: "100px", textAlign: "right" }}>
+                    {Number(tvld.holderNumber).toLocaleString()}</Styled.Td>
                 <Styled.Td className="content" style={{ width: "100px", textAlign: "right" }}>
                     {tvld.marketCap > 0 ? Number(tvld.transferNumber).toLocaleString() : "-"}</Styled.Td>
 
